@@ -1,6 +1,6 @@
 <?php
 
-require_once './dao/PessoaDao.php';
+require_once '../../dao/PessoaDao.php';
 
 /**
  * 
