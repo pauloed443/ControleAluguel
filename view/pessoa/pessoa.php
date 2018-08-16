@@ -119,7 +119,8 @@ if(permissao("pessoa_visualizar"))
                                         </tr>
                                     <?php 
                                     }
-                                    } ?>
+                                    } 
+                                ?>
                             </tbody>
                         </table>
                     </div>
