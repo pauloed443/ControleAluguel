@@ -1,6 +1,9 @@
 <?php
 
-require_once '../dao/GrupoUsuarioDao.php';
+//require_once '../dao/GrupoUsuarioDao.php';
+function __autoload($classe){
+	require_once '../dao/'.$classe.'.php';
+}
 /**
  * 
  */
