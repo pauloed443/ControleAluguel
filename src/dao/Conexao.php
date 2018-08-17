@@ -1,5 +1,7 @@
 <?php 
 namespace Dao;
+
+use PDO, PDOException;
 /**
  * 
  */
