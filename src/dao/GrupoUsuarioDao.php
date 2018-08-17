@@ -1,5 +1,10 @@
 <?php
-require_once 'Conexao.php';
+namespace Dao;
+define("DS", DIRECTORY_SEPARATOR);
+require_once __DIR__.DS.'vendor'.DS.'autoload.php';
+
+use Dao\Conexao;
+//require_once 'Conexao.php';
 /**
  * 
  */

@@ -1,5 +1,9 @@
 <?php
+namespace Controller;
 
+define("DS", DIRECTORY_SEPARATOR);
+require_once __DIR__.DS.'vendor'.DS.'autoload.php';
+use Dao\Dao\GrupoUsuarioDao;
 //require_once '../dao/GrupoUsuarioDao.php';
 function __autoload($classe){
 	require_once '../dao/'.$classe.'.php';

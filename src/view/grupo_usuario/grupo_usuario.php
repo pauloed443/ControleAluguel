@@ -94,7 +94,11 @@ if(permissao("grupo_usuario_visualizar"))
                             </thead>
                             <tbody>
                                 <?php 
-                                    require_once '../../controller/GrupoUsuarioController.php';
+                                    define("DS", DIRECTORY_SEPARATOR);
+                                    require_once __DIR__.DS.'vendor'.DS.'autoload.php';
+                                    use Controller\GrupoUsuarioController;
+
+                                    //require_once '../../controller/GrupoUsuarioController.php';
                                     $grupoUsuarioController = new GrupoUsuarioController;
                                     $array = $grupoUsuarioController::selectAll();
                                     if(count($array["grupo_usuarios"]) > 0){
