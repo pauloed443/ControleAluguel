@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<?php 
-session_start();
-$_SESSION['url'] = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"]);
- ?>
 <html lang="pt_br">
 <head>
     <meta charset="utf-8">
@@ -33,7 +29,7 @@ $_SESSION['url'] = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"])
 include('session.checkSession')
 include('session.permissoes')
 
-if(permissao("grupo_usuario_visualizar"))
+if(permissao("pessoa_visualizar"))
 
     include('masks.fone')
     include('partials.navbar') ?-->
@@ -45,10 +41,10 @@ if(permissao("grupo_usuario_visualizar"))
                 <div class="card-header">
                     <div class="row">
                         <div class="mr-auto ml-2">
-                            <h2>Grupo de Usuario</h2>
+                            <h2>Pessoas</h2>
                         </div>
-                        <?php //if(permissao("grupo_usuario_criar")) ?> 
-                        <form action="new.php">
+                        <?php //if(permissao("pessoa_criar")) ?> 
+                        <form action="pessoa/new/">
                             <div class="mr-2">
                                 <button type="submit" class="btn btn-primary">+ Novo</button>
                             </div>
@@ -58,7 +54,7 @@ if(permissao("grupo_usuario_visualizar"))
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="GET">
+                    <form action="{{url('pessoa/search')}}" method="GET">
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="form-group">
@@ -88,33 +84,35 @@ if(permissao("grupo_usuario_visualizar"))
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nome</th>
-                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Dt. Aniver.</th>
                                     <th scope="text-center">Operações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
                                     define("DS", DIRECTORY_SEPARATOR);
-                                    require_once __DIR__.DS.'vendor'.DS.'autoload.php';
-                                    use Controller\GrupoUsuarioController;
+                                    require_once __DIR__ . DS . '..'.DS.'..'.DS.'..'.DS.'vendor' .DS. 'autoload.php';
 
-                                    //require_once '../../controller/GrupoUsuarioController.php';
-                                    $grupoUsuarioController = new GrupoUsuarioController;
-                                    $array = $grupoUsuarioController::selectAll();
-                                    if(count($array["grupo_usuarios"]) > 0){
-                                        foreach ($array["grupo_usuarios"] as $value){ 
-                                ?>
+                                    $pessoaController = new \App\Controller\PessoaController;
+                                    $array = $pessoaController::selectAll();
+                                    if(count($array["pessoas"]) > 0){
+                                        foreach ($array["pessoas"] as $value){ ?>
                                             <tr>
-                                                <td scope="row"><?=$value["id"]?></td>
-                                                <td><?=$value["nome"]?></td>
-                                                <td><?=$value["descricao"]?></td>
+                                                <td scope="row"><?=$value["Id"]?></td>
+                                                <td><?=$value["Nome"]?></td>
+                                                <td> contato
+                                                </td>
+                                                <td><?=$value["Email"]?></td>
+                                                <td><?php echo date('d/m/Y', strtotime($value["dataNascimento"])); ?></td>
                                                 <td class="row">
-                                                    <a href="<?=$value["id"]?>">
+                                                    <a href="<?=$value["Id"]?>">
                                                         <span class="btn btn-primary btn-sm">
                                                             <span class="fa fa-edit"> Editar</span>
                                                         </span>
                                                     </a>
-                                                    <a href="<?=$value["id"]?>">
+                                                    <a href="<?=$value["Id"]?>">
                                                         <span class="btn btn-danger btn-sm">
                                                             <span class="fa fa-remove"> Excluir</span>
                                                         </span>
@@ -133,7 +131,7 @@ if(permissao("grupo_usuario_visualizar"))
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">Total =
                                 <span class="badge badge-primary badge-pill">
-                                    <?=count($array["grupo_usuarios"])?>
+                                    <?=$total=count($array["pessoas"])?>
                                 </span>
                             </li>
                         </ul>

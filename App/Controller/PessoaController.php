@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../dao/PessoaDao.php';
+namespace App\Controller;
 
 /**
  * 
@@ -8,7 +8,7 @@ require_once '../../dao/PessoaDao.php';
 class PessoaController {
 
 	public function selectAll() {
-		$pessoaDao = new PessoaDao;
+		$pessoaDao = new \App\Dao\PessoaDao();
 		return array('pessoas'=>$pessoaDao::selectAll());
 	}
 	

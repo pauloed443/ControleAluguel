@@ -1,9 +1,7 @@
 {
 	"autoload": {
 		"psr-4": {
-			"src\\" : "src/",
-			"Controller\\" : "controller/",
-			"Dao\\" : "dao/"
+			"App\\" : "App/"
 		}
 	}
 }

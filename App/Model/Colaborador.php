@@ -1,5 +1,7 @@
 <?php 
-require_once 'Pessoa.php';
+namespace App\Model;
+
+//require_once 'Pessoa.php';
 /**
  * 
  */

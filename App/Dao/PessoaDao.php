@@ -1,5 +1,8 @@
 <?php
-require_once 'Conexao.php';
+namespace App\Dao;
+
+use PDO, PDOException;
+//require_once 'Conexao.php';
 /**
  * 
  */

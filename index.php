@@ -4,10 +4,12 @@
 	<title>Controle Aluguel</title>
 </head>
 <body>
-	<?php //header("location: view/arquivo.php") 
+	<?php 
+	header("location: App/View/grupo_usuario/grupo_usuario.php") 
 	//require_once 'dao/Conexao.php';
-	require_once 'controller/PessoaController.php';
-	$conn = new PessoaController;
+	/*
+	require_once 'vendor/autoload.php';
+	$conn = new \App\Controller\PessoaController();
 	
 	echo "<pre>";
 	$r = $conn::selectAll();
@@ -17,6 +19,7 @@
 		}
 	echo "</table>";
 	var_dump($conn::selectAll());
+	*/
 	?>
 </body>
 </html>
