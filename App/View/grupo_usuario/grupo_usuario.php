@@ -48,11 +48,9 @@ if(permissao("grupo_usuario_visualizar"))
                             <h2>Grupo de Usuario</h2>
                         </div>
                         <?php //if(permissao("grupo_usuario_criar")) ?> 
-                        <form action="new.php">
                             <div class="mr-2">
-                                <button type="submit" class="btn btn-primary">+ Novo</button>
+                                <a href="new.php"><button class="btn btn-primary">+ Novo</button></a>
                             </div>
-                        </form>
                         <!--@endif-->
                     </div>
                 </div>

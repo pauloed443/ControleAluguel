@@ -43,7 +43,7 @@ if(permissao("grupo_usuario_visualizar"))
       <div class="container my-5">
 
             <div class="card">
-            <form action="../../controller/GrupoUsuarioController.php" method="POST">
+            <form action="../../Controller/GrupoUsuarioController.php" method="POST">
 
                     <div class="card-header">
                   <div class="row">

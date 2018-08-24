@@ -17,7 +17,10 @@ class GrupoUsuarioController {
 	}
 
 	public function insert($dados) {
-		echo "Salvou";
+
+		$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
+		//$result = $grupousuarioDao::insert($dados);
+		echo var_dump($dados);
 	}
 
 	public function update($dados) {
@@ -28,13 +31,13 @@ class GrupoUsuarioController {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+	session_start();
 	$url = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"]);
 	
 	$url = $_SESSION['url'];
 	$grupousuariocontroller = new GrupoUsuarioController;
 
-	if ($url == 'App/View/grupo_usuario/new.php?') {
+	if ($url == 'App/View/grupo_usuario/new.php') {
 		$grupousuariocontroller->insert($_POST);
 	}
 
