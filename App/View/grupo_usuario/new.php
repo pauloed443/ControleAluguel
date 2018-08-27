@@ -46,7 +46,7 @@ if(permissao("grupo_usuario_visualizar"))
       <div class="container my-5">
 
             <div class="card">
-            <form action="../../Controller/GrupoUsuarioController.php" method="POST">
+            <form action="save.php" method="POST">
 
                     <div class="card-header">
                   <div class="row">
@@ -58,16 +58,16 @@ if(permissao("grupo_usuario_visualizar"))
                     <div class="card-body">
                       <div class="row">
                         <div class="col-sm-6">
-                                <div class="form-group">
+                            <div class="form-group">
                               <label>Nome: *</label>
                               <input type="text" class="form-control" name="nome" placeholder="Nome do Grupo" required="">
-                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-6">
-                                <div class="form-group">
+                            <div class="form-group">
                               <label>Descrição:</label>
                               <input type="text" class="form-control" name="descricao" placeholder="Descrição do Grupo">
-                                </div>
+                            </div>
                         </div>
                         </div>
 

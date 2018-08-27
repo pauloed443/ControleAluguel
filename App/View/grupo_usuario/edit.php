@@ -8,7 +8,7 @@ echo $_SESSION['url'];
 
 //require_once '../../controller/GrupoUsuarioController.php';
 $grupoUsuarioController = new \App\Controller\GrupoUsuarioController;
-$array = $grupoUsuarioController::selectId($_GET['id']);
+$array = $grupoUsuarioController->selectId($_GET['id']);
 ?>
 
 <!DOCTYPE html>
