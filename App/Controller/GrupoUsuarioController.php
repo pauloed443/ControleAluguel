@@ -1,25 +1,33 @@
 <?php
 namespace App\Controller;
 
-/**
- * 
- */
+use App\Dao\GrupoUsuarioDao;
+
 class GrupoUsuarioController {
+
+	private $grupousuarioDao;
+
+	public function __construct() {
+		if (empty($grupousuarioDao)) {
+			$this->grupousuarioDao = new GrupoUsuarioDao();
+		}
+	}
 	
 	public function selectAll() {
-		$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
-		return array('grupo_usuarios'=>$grupousuarioDao::selectAll());
+		//$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
+		echo var_dump($this->grupousuarioDao);
+		return array('grupo_usuarios'=>$this->grupousuarioDao->selectAll());
 	}
 
 	public function selectId($id) {
-		$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
-		return array('grupo_usuario'=>$grupousuarioDao::selectId($id));
+		//$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
+		return array('grupo_usuario'=>$this->grupousuarioDao->selectId($id));
 	}
 
 	public function insert($dados) {
-
-		$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
-		//$result = $grupousuarioDao::insert($dados);
+		//$grupousuarioDao = new \App\Dao\GrupoUsuarioDao;
+		echo var_dump($this->grupousuarioDao);
+		$grupousuarioDao->insert($dados);
 		echo var_dump($dados);
 	}
 
@@ -32,7 +40,6 @@ class GrupoUsuarioController {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	session_start();
-	$url = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"]);
 	
 	$url = $_SESSION['url'];
 	$grupousuariocontroller = new GrupoUsuarioController;

@@ -7,25 +7,27 @@ use PDO, PDOException;
  * 
  */
 class GrupoUsuarioDao extends Conexao {
+
+	protected $table = 'grupo_usuario';
 	
 	public function selectAll()	{
-		$sql = "SELECT * FROM grupo_usuario";
-		$result= null;
+		$sql = "SELECT * FROM {$this->table}";
 		try {
 			$conn = parent::getConnection();
 			$stmt = $conn->prepare($sql);
 			$stmt->setFetchMode(PDO::FETCH_ASSOC);
 			$stmt->execute();
 			$result = $stmt->fetchAll();
+			return $result;
 		} catch(PDOException $e){
 			echo "Erro Select: ".$e->getMessage();
 		}
-		return $result;
+		
 	}
 
 	public function selectId($id)
 	{
-		$sql = "SELECT * FROM grupo_usuario WHERE id = :id";
+		$sql = "SELECT * FROM {$this->table} WHERE id = :id";
 		$result= null;
 		try {
 			$conn = parent::getConnection();
@@ -42,7 +44,7 @@ class GrupoUsuarioDao extends Conexao {
 
 	public function insert($post)
 	{
-		$sql = "INSERT INTO grupo_usuario SET 
+		$sql = "INSERT INTO {$this->table} SET 
 								nome=:nome, 
 								descricao= :descricao ,
 

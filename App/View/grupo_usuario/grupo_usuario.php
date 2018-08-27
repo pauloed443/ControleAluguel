@@ -96,8 +96,8 @@ if(permissao("grupo_usuario_visualizar"))
                                     require_once __DIR__.DS .'..'.DS.'..'.DS.'..'.DS.'vendor'.DS.'autoload.php';
 
                                     //require_once '../../controller/GrupoUsuarioController.php';
-                                    $grupoUsuarioController = new \App\Controller\GrupoUsuarioController;
-                                    $array = $grupoUsuarioController::selectAll();
+                                    $grupoUsuarioController = new \App\Controller\GrupoUsuarioController();
+                                    $array = $grupoUsuarioController->selectAll();
                                     if(count($array["grupo_usuarios"]) > 0){
                                         foreach ($array["grupo_usuarios"] as $value){ 
                                 ?>

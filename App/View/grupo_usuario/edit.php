@@ -6,9 +6,9 @@ session_start();
 $_SESSION['url'] = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"]);
 echo $_SESSION['url'];
 
-    //require_once '../../controller/GrupoUsuarioController.php';
-    $grupoUsuarioController = new \App\Controller\GrupoUsuarioController;
-    $array = $grupoUsuarioController::selectId($_GET['id']);
+//require_once '../../controller/GrupoUsuarioController.php';
+$grupoUsuarioController = new \App\Controller\GrupoUsuarioController;
+$array = $grupoUsuarioController::selectId($_GET['id']);
 ?>
 
 <!DOCTYPE html>
