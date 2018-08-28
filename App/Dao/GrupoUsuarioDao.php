@@ -2,10 +2,8 @@
 namespace App\Dao;
 
 use PDO, PDOException;
-//require_once 'Conexao.php';
-/**
- * 
- */
+use App\Model\GrupoUsuario;
+
 class GrupoUsuarioDao extends Conexao {
 
 	protected $table = 'grupo_usuario';
@@ -219,6 +217,132 @@ class GrupoUsuarioDao extends Conexao {
 			$result = $stmt->execute();
 		} catch(PDOException $e){
 			echo "Erro Insert: ".$e->getMessage();
+		}
+		return $result;
+	}
+
+	public function update(GrupoUsuario $gu)
+	{
+		$result = null;
+		$sql = "UPDATE {$this->table} SET
+						nome = :nome , 
+						descricao = :descricao ,
+						pessoa_criar = :pessoa_criar ,
+		    			pessoa_editar = :pessoa_editar ,
+		    			pessoa_excluir = :pessoa_excluir ,
+		    			pessoa_visualizar = :pessoa_visualizar ,
+		    			tipo_colaborador_criar = :tipo_colaborador_criar ,
+		    			tipo_colaborador_editar = :tipo_colaborador_editar ,
+		    			tipo_colaborador_excluir = :tipo_colaborador_excluir ,
+		    			tipo_colaborador_visualizar = :tipo_colaborador_visualizar ,
+		    			forma_pagamento_criar = :forma_pagamento_criar ,
+		    			forma_pagamento_editar = :forma_pagamento_editar ,
+		    			forma_pagamento_excluir = :forma_pagamento_excluir ,
+		    			forma_pagamento_visualizar = :forma_pagamento_visualizar ,
+		    			servico_criar = :servico_criar ,
+		    			servico_editar = :servico_editar ,
+		    			servico_excluir = :servico_excluir ,
+		    			servico_visualizar = :servico_visualizar ,
+		    			ordem_servico_criar = :ordem_servico_criar ,
+		    			ordem_servico_editar = :ordem_servico_editar ,
+		    			ordem_servico_excluir = :ordem_servico_excluir ,
+		    			ordem_servico_visualizar = :ordem_servico_visualizar ,
+		    			relatorio_visualizar = :relatorio_visualizar ,
+		    			contas_receber_criar = :contas_receber_criar ,
+		    			contas_receber_editar = :contas_receber_editar ,
+		    			contas_receber_baixar = :contas_receber_baixar ,
+		    			contas_receber_cancelar = :contas_receber_cancelar ,
+		    			contas_receber_estornar = :contas_receber_estornar ,
+		    			contas_receber_visualizar = :contas_receber_visualizar ,
+		    			movimento_caixa_criar = :movimento_caixa_criar ,
+		    			movimento_caixa_editar = :movimento_caixa_editar ,
+		    			movimento_caixa_excluir = :movimento_caixa_excluir ,
+		    			movimento_caixa_visualizar = :movimento_caixa_visualizar ,
+		    			empresa_editar = :empresa_editar ,
+		    			empresa_visualizar = :empresa_visualizar ,
+		    			email_editar = :email_editar ,
+		    			email_visualizar = :email_visualizar ,
+		    			usuario_criar = :usuario_criar ,
+		    			usuario_editar = :usuario_editar ,
+		    			usuario_excluir = :usuario_excluir ,
+		    			usuario_visualizar = :usuario_visualizar ,
+		    			grupo_usuario_criar = :grupo_usuario_criar ,
+		    			grupo_usuario_editar = :grupo_usuario_editar ,
+		    			grupo_usuario_excluir = :grupo_usuario_excluir ,
+		    			grupo_usuario_visualizar = :grupo_usuario_visualizar 
+				WHERE id = :id;";
+
+		try {
+			$conn = parent::getConnection();
+			$stmt = $conn->prepare($sql);
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+			$stmt->bindValue(":id", $gu->getId());
+			$stmt->bindValue(":nome", $gu->getNome());
+			$stmt->bindValue(":descricao", $gu->getDescricao());
+			$stmt->bindValue(":pessoa_criar", $gu->getPessoaCriar());
+			$stmt->bindValue(":pessoa_editar", $gu->getPessoaEditar());
+			$stmt->bindValue(":pessoa_excluir", $gu->getPessoaExcluir());
+			$stmt->bindValue(":pessoa_visualizar", $gu->getPessoaVisualizar());
+			$stmt->bindValue(":tipo_colaborador_criar", $gu->getTipoColaboradorCriar());
+			$stmt->bindValue(":tipo_colaborador_editar", $gu->getTipoColaboradorEditar());
+			$stmt->bindValue(":tipo_colaborador_excluir", $gu->getTipoColaboradorExcluir());
+			$stmt->bindValue(":tipo_colaborador_visualizar", $gu->getTipoColaboradorVisualizar());
+			$stmt->bindValue(":forma_pagamento_criar", $gu->getFormaPagamentoCriar());
+			$stmt->bindValue(":forma_pagamento_editar", $gu->getFormaPagamentoEditar());
+			$stmt->bindValue(":forma_pagamento_excluir", $gu->getFormaPagamentoExcluir());
+			$stmt->bindValue(":forma_pagamento_visualizar", $gu->getFormaPagamentoEVisualizar());
+			$stmt->bindValue(":servico_criar", $gu->getServicoCriar());
+			$stmt->bindValue(":servico_editar", $gu->getServicoEditar());
+			$stmt->bindValue(":servico_excluir", $gu->getServicoExcluir());
+			$stmt->bindValue(":servico_visualizar", $gu->getServicoVisualizar());
+			$stmt->bindValue(":ordem_servico_criar", $gu->getOrdemServicoCriar());
+			$stmt->bindValue(":ordem_servico_editar", $gu->getOrdemServicoEditar());
+			$stmt->bindValue(":ordem_servico_excluir", $gu->getOrdemServicoExcluir());
+			$stmt->bindValue(":ordem_servico_visualizar", $gu->getOrdemServicoVisualizar());
+			$stmt->bindValue(":relatorio_visualizar", $gu->getRelatorioVisualizar());
+			$stmt->bindValue(":contas_receber_criar", $gu->getContasReceberCriar());
+			$stmt->bindValue(":contas_receber_editar", $gu->getContasReceberEditar());
+			$stmt->bindValue(":contas_receber_baixar", $gu->getContasReceberBaixar());
+			$stmt->bindValue(":contas_receber_cancelar", $gu->getContasReceberCancelar());
+			$stmt->bindValue(":contas_receber_estornar", $gu->getContasReceberEstornar());
+			$stmt->bindValue(":contas_receber_visualizar", $gu->getContasReceberVisualizar());
+			$stmt->bindValue(":movimento_caixa_criar", $gu->getMovimentoCaixaCriar());
+			$stmt->bindValue(":movimento_caixa_editar", $gu->getMovimentoCaixaEditar());
+			$stmt->bindValue(":movimento_caixa_excluir", $gu->getMovimentoCaixaExcluir());
+			$stmt->bindValue(":movimento_caixa_visualizar", $gu->getMovimentoCaixaVisualizar());
+			$stmt->bindValue(":empresa_editar", $gu->getEmpresaEditar());
+			$stmt->bindValue(":empresa_visualizar", $gu->getEmpresaVisualizar());
+			$stmt->bindValue(":email_editar", $gu->getEmailEditar());
+			$stmt->bindValue(":email_visualizar", $gu->getEmailVisualizar());
+			$stmt->bindValue(":usuario_criar", $gu->getUsuarioCriar());
+			$stmt->bindValue(":usuario_editar", $gu->getUsuarioEditar());
+			$stmt->bindValue(":usuario_excluir", $gu->getUsuarioExcluir());
+			$stmt->bindValue(":usuario_visualizar", $gu->getUsuarioVisualizar());
+			$stmt->bindValue(":grupo_usuario_criar", $gu->getGrupoUsuarioCriar());
+			$stmt->bindValue(":grupo_usuario_editar", $gu->getGrupoUsuarioEditar());
+			$stmt->bindValue(":grupo_usuario_excluir", $gu->getGrupoUsuarioExcluir());
+			$stmt->bindValue(":grupo_usuario_visualizar", $gu->getGrupoUsuarioVisualizar());
+
+			$result = $stmt->execute();
+		} catch(PDOException $e){
+			echo "Erro Update: ".$e->getMessage();
+		}
+		return $result;
+	}
+
+	public function delete($id)
+	{
+		$result= null;
+		$sql = "DELETE FROM {$this->table} WHERE id = :id";
+		try {
+			$conn = parent::getConnection();
+			$stmt = $conn->prepare($sql);
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$stmt->bindValue(":id", $id);
+			$result = $stmt->execute();
+		} catch(PDOException $e){
+			echo "Erro SelectId: ".$e->getMessage();
 		}
 		return $result;
 	}

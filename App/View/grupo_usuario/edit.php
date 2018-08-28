@@ -4,7 +4,7 @@ require_once __DIR__.DS .'..'.DS.'..'.DS.'..'.DS.'vendor'.DS.'autoload.php';
 
 session_start();
 $_SESSION['url'] = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"]);
-echo $_SESSION['url'];
+
 
 //require_once '../../controller/GrupoUsuarioController.php';
 $grupoUsuarioController = new \App\Controller\GrupoUsuarioController;
@@ -50,7 +50,7 @@ if(permissao("grupo_usuario_editar"))
     	<div class="container my-5">
 
             <div class="card">
-        		<form action="?id=<?=$array['grupo_usuario']['id']?>&a=ok" method="POST">
+        		<form action="toedit.php" method="POST">
 
                     <div class="card-header">
         	    		<div class="row">

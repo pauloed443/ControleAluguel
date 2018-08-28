@@ -5,7 +5,7 @@ require_once __DIR__.DS .'..'.DS.'..'.DS.'..'.DS.'vendor'.DS.'autoload.php';
 
 session_start();
 $_SESSION['url'] = str_replace("/ControleAluguel/", "", $_SERVER["REQUEST_URI"]);
-echo $_SESSION['url'];
+
  ?>
 <html lang="pt_br">
 <head>

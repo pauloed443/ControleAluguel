@@ -115,31 +115,11 @@ if(permissao("grupo_usuario_visualizar"))
                                                             <span class="fa fa-edit"> Editar</span>
                                                         </button>
                                                     </form>
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalDelete" onclick="showModal()">
+                                                    <form action="toremove.php" method="POST">
+                                                        <input type="hidden" name="id" value="<?=$value['id']?>">
+                                                        <button type="submit" class="btn btn-danger btn-sm">
                                                             <span class="fa fa-remove"> Excluir</span>
                                                         </button>
-                                                    <!-- Modal -->
-                                                    <form action="toedit.php" method="POST">
-                                                        <input type="hidden" name="id" value="<?=$value['id']?>">
-                                                        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                          <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                              <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Atenção!</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                  <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                              </div>
-                                                              <div class="modal-body">
-                                                                Deseja excluir o registro?
-                                                              </div>
-                                                              <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                                                <button type="submit" class="btn btn-primary">Sim</button>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
