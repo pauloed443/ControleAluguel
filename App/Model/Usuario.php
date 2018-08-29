@@ -12,7 +12,7 @@ class Usuario {
 
 	public function getId()
 	{
-		return $this->iscliente;
+		return $this->id;
 	}
 	public function setId($id)
 	{
