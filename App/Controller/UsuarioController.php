@@ -58,4 +58,15 @@ class UsuarioController {
 		return $this->ud->update($this->u);
 	}
 
+	public function delete($dados)
+	{
+		$id = $dados['Id'];
+		if (!is_null($id)) {
+			$this->u->setId($id);
+			return $this->ud->delete($this->u);
+		} else {
+			return "Codigo identificador inexistente";
+		}
+	}
+
 }

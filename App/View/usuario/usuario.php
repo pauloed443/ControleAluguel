@@ -126,7 +126,7 @@ if(permissao("grupo_usuario_visualizar"))
                                                     </form>
                                                 </td>
                                             </tr>
-                                        <?php 
+                                <?php 
                                         }
                                     } 
                                 ?>

@@ -89,7 +89,7 @@ $gpu = $grupoUsuarioController->selectAll();
                             <div class="col-sm-4">
                                 <label>Grupo Usuário:</label>
                                 <select name="idGrupoUsuario" class="form-control">
-                                    <option value=''></option>
+                                    <option value='0'></option>
                                     <?php
                                     if (count($gpu['grupo_usuarios']) > 0):
                                         foreach ($gpu['grupo_usuarios'] as $value):

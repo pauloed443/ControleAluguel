@@ -73,14 +73,14 @@ class UsuarioDao extends Conexao {
 							Login = :login , 
 							Nome = :nome , 
 							Email = :email , 
-							idGrupoUsuario = idgrupousuario
+							idGrupoUsuario = :idgrupousuario
 				WHERE Id = :id;";
 
 		try {
 			$conn = parent::getConnection();
 			$stmt = $conn->prepare($sql);
 			$stmt->setFetchMode(PDO::FETCH_ASSOC);
-var_dump($u);
+
 			$stmt->bindValue(":id", $u->getId());
 			$stmt->bindValue(":login", $u->getLogin());
 			$stmt->bindValue(":nome", $u->getNome());
@@ -91,9 +91,28 @@ var_dump($u);
 			$result = $stmt->execute();
 			$stmt->closeCursor();
 		} catch(PDOException $e){
-			echo "Erro Insert: ".$e->getMessage();
+			echo "Erro Update: ".$e->getMessage();
 		}
 		return $result;
 	}
 
+	public function delete(Usuario $u)
+	{
+		$result = null;
+		$sql = "DELETE FROM {$this->table} WHERE Id = :id;";
+
+		try {
+			$conn = parent::getConnection();
+			$stmt = $conn->prepare($sql);
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+			$stmt->bindValue(":id", $u->getId());
+
+			$result = $stmt->execute();
+			$stmt->closeCursor();
+		} catch(PDOException $e){
+			echo "Erro Delete: ".$e->getMessage();
+		}
+		return $result;
+	}
 }
